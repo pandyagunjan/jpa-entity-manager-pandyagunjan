@@ -1,20 +1,19 @@
 package entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
-public class Cd {
+public class CD {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Integer cd_id;
-    String title;
-    String description;
-    Integer yearOfRelease;
-    String artist;
-    Double price;
+    private Integer cd_id;
+    private String title;
+    private String description;
+    private Integer yearOfRelease;
+    private String artist;
+    private Double price;
+   // @ManyToMany
+  //  private Artist artistOne;
 
     public Integer getCd_id() {
         return cd_id;
@@ -66,7 +65,7 @@ public class Cd {
 
     @Override
     public String toString() {
-        return "Cd{" +
+        return "CD{" +
                 "cd_id=" + cd_id +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
