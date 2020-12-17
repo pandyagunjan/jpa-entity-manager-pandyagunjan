@@ -1,6 +1,6 @@
 package services;
 
-import repo.CdRepo;
+import repo.CDRepo;
 import entities.CD;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,17 +8,21 @@ import org.springframework.stereotype.Service;
 @Service
 public class CDService {
     @Autowired
-    CdRepo cdRepo;
+    private CDRepo cdRepo;
 
-    public void saveCD(CD cd)
+//    public CDService(CDRepo repo)
+//    {
+//        this.cdRepo=repo;
+//    }
+
+    public CD create(CD cd)
     {
-        cdRepo.save(cd);
-
+        return cdRepo.save(cd);
     }
 
-    public CD findTheCD(Integer id)
+    public CD readById(Integer cd_id)
     {
-        return cdRepo.findCdById(id);
+        return cdRepo.findCdById(cd_id);
     }
 
 }

@@ -1,6 +1,7 @@
 package controllers;
 
 import entities.CD;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import services.CDService;
 
@@ -12,17 +13,7 @@ import javax.persistence.Persistence;
 public class AppRunner  {
 
     public static void main(String[] args) {
+        SpringApplication.run(AppRunner.class, args);
 
-//        EntityManagerFactory emf= Persistence.createEntityManagerFactory("my-persistence-unit");
-//        EntityManager em=emf.createEntityManager();
-//
-//        CD cd ;//= em.find(CD.class,2);
-//       // System.out.println(cd);
-
-        CDService cdService= new CDService();
-        CD cd ;
-        cd = cdService.findTheCD(1);
-        cdService.saveCD(cd);
-        System.out.println(cd);
     }
 }
