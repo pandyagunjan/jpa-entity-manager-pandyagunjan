@@ -1,4 +1,4 @@
-package entities;
+package runner.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,17 +9,20 @@ import javax.persistence.Id;
 public class Artist {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer artist_id;
+    private Integer id;
     private String first_name;
     private String last_name;
     private String instrument;
 
-    public Integer getArtist_id() {
-        return artist_id;
+    public Artist() {
     }
 
-    public void setArtist_id(Integer artist_id) {
-        this.artist_id = artist_id;
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getFirst_name() {
@@ -49,7 +52,7 @@ public class Artist {
     @Override
     public String toString() {
         return "Artist{" +
-                "artist_id=" + artist_id +
+                "id=" + id +
                 ", first_name='" + first_name + '\'' +
                 ", last_name='" + last_name + '\'' +
                 ", instrument='" + instrument + '\'' +

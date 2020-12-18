@@ -1,4 +1,4 @@
-package entities;
+package runner.entities;
 
 import javax.persistence.*;
 
@@ -6,21 +6,25 @@ import javax.persistence.*;
 public class CD {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer cd_id;
+  //  @Column(name="id")
+    private Integer id;
     private String title;
     private String description;
-    private Integer yearOfRelease;
+    private Integer yearofrelease;
     private String artist;
     private Double price;
    // @ManyToMany
   //  private Artist artistOne;
 
-    public Integer getCd_id() {
-        return cd_id;
+    public CD() {
     }
 
-    public void setCd_id(Integer cd_id) {
-        this.cd_id = cd_id;
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -39,12 +43,12 @@ public class CD {
         this.description = description;
     }
 
-    public Integer getYearOfRelease() {
-        return yearOfRelease;
+    public Integer getYearofrelease() {
+        return yearofrelease;
     }
 
-    public void setYearOfRelease(Integer yearOfRelease) {
-        this.yearOfRelease = yearOfRelease;
+    public void setYearofrelease(Integer yearOfRelease) {
+        this.yearofrelease = yearOfRelease;
     }
 
     public String getArtist() {
@@ -66,10 +70,10 @@ public class CD {
     @Override
     public String toString() {
         return "CD{" +
-                "cd_id=" + cd_id +
+                "id=" + id +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
-                ", yearOfRelease=" + yearOfRelease +
+                ", yearOfRelease=" + yearofrelease +
                 ", artist='" + artist + '\'' +
                 ", price=" + price +
                 '}';
