@@ -1,20 +1,37 @@
 package runner.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import static javax.persistence.CascadeType.ALL;
 
 @Entity
-public class Artist {
+public class Musician {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String first_name;
     private String last_name;
     private String instrument;
+    //(cascade=CascadeType.ALL)
+  //  @JoinColumn(name="cd_id",referencedColumnName="id")
+   // @Column(name="cd_id")
+    @ManyToMany(cascade=ALL,fetch=FetchType.EAGER,mappedBy = "musicians")
+    private Set<CD> cds= new HashSet<>();
+    //private List<CD> cds;
 
-    public Artist() {
+    public Musician() {
+    }
+
+    public Set<CD> getCds() {
+        return cds;
+    }
+
+    public void setCds(Set<CD> cds) {
+        this.cds = cds;
     }
 
     public Integer getId() {

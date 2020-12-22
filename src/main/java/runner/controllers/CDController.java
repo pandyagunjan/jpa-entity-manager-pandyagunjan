@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.*;
 import runner.services.CDService;
 
 import java.util.List;
-
+import java.util.Optional;
+@RequestMapping("/cd")
 @RestController
 public class CDController {
     @Autowired
@@ -35,8 +36,9 @@ public class CDController {
     public ResponseEntity<List<CD>> readAll() {
         return new ResponseEntity<>(cdService.readAll(), HttpStatus.OK);
     }
+
     @PostMapping(value = "/create")
-    public ResponseEntity<CD> create(@RequestBody CD cd) {
+    public ResponseEntity<Optional<CD>> create(@RequestBody CD cd) {
         return new ResponseEntity<>(cdService.create(cd), HttpStatus.CREATED);
     }
 

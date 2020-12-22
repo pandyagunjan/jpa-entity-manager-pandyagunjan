@@ -2,37 +2,37 @@ package runner.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import runner.entities.Artist;
-import runner.repo.ArtistRepo;
+import runner.entities.Musician;
+import runner.repo.MusicianRepo;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class ArtistService {
+public class MusicianService {
 
     @Autowired
-    private ArtistRepo artistRepo;
+    private MusicianRepo artistRepo;
 
-    public Artist create(Artist artist)
+    public Musician create(Musician artist)
     {
         return artistRepo.save(artist);
     }
 
-    public Artist readById(Integer id)
+    public Musician readById(Integer id)
     {
-        return artistRepo.findArtistById(id);
+        return artistRepo.findMusicianById(id);
     }
 
-    public List<Artist> readAll() {
-        Iterable<Artist> allCDs = artistRepo.findAll();
-        List<Artist> CDList = new ArrayList<>();
+    public List<Musician> readAll() {
+        Iterable<Musician> allCDs = artistRepo.findAll();
+        List<Musician> CDList = new ArrayList<>();
         allCDs.forEach(CDList::add);
         return CDList;
     }
 
-    public Artist update(Integer id, Artist artist)
+    public Musician update(Integer id, Musician artist)
     {
-        Artist artistInDB = this.readById(id);
+        Musician artistInDB = this.readById(id);
         artistInDB.setFirst_name(artist.getFirst_name());
         artistInDB.setLast_name(artist.getLast_name());
         artistInDB.setInstrument(artist.getLast_name());
@@ -41,8 +41,8 @@ public class ArtistService {
 
     }
 
-    public Artist deleteById(Integer id) {
-        Artist artistToBeDeleted = this.readById(id);
+    public Musician deleteById(Integer id) {
+        Musician artistToBeDeleted = this.readById(id);
         artistRepo.delete(artistToBeDeleted);
         return artistToBeDeleted;
     }

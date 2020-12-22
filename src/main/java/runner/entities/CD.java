@@ -1,6 +1,14 @@
 package runner.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import static javax.persistence.CascadeType.ALL;
 
 @Entity
 public class CD {
@@ -11,10 +19,18 @@ public class CD {
     private String title;
     private String description;
     private Integer yearofrelease;
-    private String artist;
     private Double price;
-   // @ManyToMany
-  //  private Artist artistOne;
+    @JsonBackReference
+    @ManyToMany(cascade=ALL,fetch=FetchType.LAZY)//,mappedBy = "cd")
+    private Set<Musician> musicians = new HashSet<>();
+
+    public Set<Musician> getMusicians() {
+        return musicians;
+    }
+
+    public void setMusicians(Set<Musician> musicians) {
+        this.musicians = musicians;
+    }
 
     public CD() {
     }
@@ -51,13 +67,7 @@ public class CD {
         this.yearofrelease = yearOfRelease;
     }
 
-    public String getArtist() {
-        return artist;
-    }
 
-    public void setArtist(String artist) {
-        this.artist = artist;
-    }
 
     public Double getPrice() {
         return price;
@@ -67,15 +77,4 @@ public class CD {
         this.price = price;
     }
 
-    @Override
-    public String toString() {
-        return "CD{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", yearOfRelease=" + yearofrelease +
-                ", artist='" + artist + '\'' +
-                ", price=" + price +
-                '}';
-    }
 }
